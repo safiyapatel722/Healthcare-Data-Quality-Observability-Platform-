@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: mart_vaccination_effectiveness
+    description: "Daily vaccination progress and effectiveness metrics by country"
+    columns:
+      - name: date
+        description: "Reporting date"
+        tests:
+          - not_null
+      - name: country_code
+        description: "ISO 2-letter country code"
+        tests:
+          - not_null
+      - name: country_name
+        description: "Full country name"
+        tests:
+          - not_null
+      - name: total_new_vaccinated
+        description: "New people vaccinated per day"
+        tests:
+          - not_null
+      - name: total_new_fully_vaccinated
+        description: "New people fully vaccinated per day"
+        tests:
+          - not_null
+      - name: total_doses_pfizer
+        description: "New Pfizer doses administered per day"
+        tests:
+          - not_null
+      - name: total_doses_moderna
+        description: "New Moderna doses administered per day"
+        tests:
+          - not_null
+      - name: total_doses_janssen
+        description: "New Janssen doses administered per day"
+        tests:
+          - not_null
+      - name: vaccination_coverage_pct
+        description: "Percentage of population fully vaccinated"
+      - name: total_new_cases
+        description: "New cases on same day for effectiveness comparison"
+        tests:
+          - not_null
+      - name: total_new_deaths
+        description: "New deaths on same day for effectiveness comparison"
+        tests:
+          - not_null

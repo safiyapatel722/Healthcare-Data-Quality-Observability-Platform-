@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: healthcare_staging
+    database: covid-data-observability
+    schema: healthcare_staging
+    tables:
+      - name: covid19_raw

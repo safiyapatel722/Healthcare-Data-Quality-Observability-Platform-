@@ -1,0 +1,22 @@
+{
+  "data": {
+    "asset": {
+      "id": "f4f5c4da-bb77-4d1d-90fc-75e24063b411",
+      "name": "pandemic_impact"
+    },
+    "batch_definition": {
+      "id": "c0eb5cea-d7b6-405b-acb4-021ce358e928",
+      "name": "full_batch"
+    },
+    "datasource": {
+      "id": "a8666c36-7ee6-4f0c-a227-f78f727bb444",
+      "name": "bigquery_pandas"
+    }
+  },
+  "id": "a97aaeff-2832-4c4c-83a2-31bbeebdc2cc",
+  "name": "pandemic_impact_validation",
+  "suite": {
+    "id": "bcda9ddf-e322-4b43-a5ca-a258fecdcda0",
+    "name": "covid19_quality_suite"
+  }
+}

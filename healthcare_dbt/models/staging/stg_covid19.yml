@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: stg_covid19
+    description: "Cleaned and standardized COVID19 data from raw BigQuery public dataset"
+    columns:
+      - name: date
+        description: "Reporting date"
+        tests:
+          - not_null
+      - name: country_code
+        description: "ISO 2-letter country code"
+        tests:
+          - not_null
+      - name: country_name
+        description: "Full country name"
+        tests:
+          - not_null
+      - name: new_confirmed
+        description: "New confirmed cases, nulls coalesced to 0"
+        tests:
+          - not_null
+      - name: new_deceased
+        description: "New deaths, nulls coalesced to 0"
+        tests:
+          - not_null
+      - name: new_hospitalized_patients
+        description: "New hospitalizations, nulls coalesced to 0"
+        tests:
+          - not_null
+      - name: new_vaccine_doses_administered
+        description: "New vaccine doses given, nulls coalesced to 0"
+        tests:
+          - not_null
+      - name: stringency_index
+        description: "Government response stringency score 0-100"
+        tests:
+          - not_null

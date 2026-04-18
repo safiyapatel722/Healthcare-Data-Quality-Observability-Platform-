@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: mart_pandemic_impact
+    description: "Daily pandemic impact metrics by country including hospital and ICU pressure"
+    columns:
+      - name: date
+        description: "Reporting date"
+        tests:
+          - not_null
+      - name: country_code
+        description: "ISO 2-letter country code"
+        tests:
+          - not_null
+      - name: country_name
+        description: "Full country name"
+        tests:
+          - not_null
+      - name: total_new_cases
+        description: "Total new confirmed cases per day"
+        tests:
+          - not_null
+      - name: total_new_deaths
+        description: "Total new deaths per day"
+        tests:
+          - not_null
+      - name: case_fatality_rate
+        description: "Percentage of confirmed cases resulting in death"
+      - name: hospitalization_rate
+        description: "Percentage of confirmed cases requiring hospitalization"
+      - name: current_icu_patients
+        description: "Current patients in ICU"
+        tests:
+          - not_null
+      - name: current_ventilator_patients
+        description: "Current patients on ventilators"
+        tests:
+          - not_null
+      - name: avg_hospital_beds_per_1000
+        description: "Average hospital beds available per 1000 people"

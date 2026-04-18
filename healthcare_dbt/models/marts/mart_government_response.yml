@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: mart_government_response
+    description: "Government policy response metrics and their correlation with case outcomes"
+    columns:
+      - name: date
+        description: "Reporting date"
+        tests:
+          - not_null
+      - name: country_code
+        description: "ISO 2-letter country code"
+        tests:
+          - not_null
+      - name: country_name
+        description: "Full country name"
+        tests:
+          - not_null
+      - name: avg_stringency_index
+        description: "Average government response stringency score 0-100"
+      - name: school_closing
+        description: "School closing policy level 0-3"
+        tests:
+          - not_null
+      - name: stay_at_home_requirements
+        description: "Stay at home policy level 0-3"
+        tests:
+          - not_null
+      - name: international_travel_controls
+        description: "International travel restriction level 0-4"
+        tests:
+          - not_null
+      - name: total_new_cases
+        description: "New cases under current policy measures"
+        tests:
+          - not_null
+      - name: total_new_deaths
+        description: "New deaths under current policy measures"
+        tests:
+          - not_null
+      - name: case_fatality_rate
+        description: "Case fatality rate under current policy measures"
+      - name: avg_gdp_per_capita
+        description: "Average GDP per capita in USD"
+      - name: avg_hdi
+        description: "Average Human Development Index"
