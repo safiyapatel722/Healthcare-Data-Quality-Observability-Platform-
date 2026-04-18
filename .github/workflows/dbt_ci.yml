@@ -26,12 +26,10 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: |
-          pip install dbt-bigquery==1.9.0
+        run: pip install dbt-bigquery==1.9.0
 
       - name: Create GCP credentials file
-        run: |
-          echo '${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}' > /tmp/gcp-key.json
+        run: echo '${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}' > /tmp/gcp-key.json
 
       - name: Create dbt profiles
         run: |
@@ -47,20 +45,4 @@ jobs:
                 keyfile: /tmp/gcp-key.json
                 location: US
                 threads: 4
-                job_execution_timeout_seconds: 300
-                job_retries: 1
-                priority: interactive
-            target: dev
-          EOF
-
-      - name: Install dbt packages
-        working-directory: healthcare_dbt
-        run: dbt deps
-
-      - name: Run dbt models
-        working-directory: healthcare_dbt
-        run: dbt run --target dev
-
-      - name: Run dbt tests
-        working-directory: healthcare_dbt
-        run: dbt test --target dev
+                job_execution_timeout_
