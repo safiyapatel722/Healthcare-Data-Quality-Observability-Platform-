@@ -49,54 +49,54 @@ The platform answers three critical public health questions:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                        DATA INGESTION LAYER                          │
-│                                                                       │
-│   BigQuery Public Dataset                                             │
-│   (bigquery-public-data.covid19_open_data)                           │
-│              │                                                        │
-│              ▼                                                        │
-│   PySpark Job (Dataproc Serverless)                                  │
-│   ┌─────────────────────────────┐                                    │
+│                        DATA INGESTION LAYER                         │
+│                                                                     │
+│   BigQuery Public Dataset                                           │
+│   (bigquery-public-data.covid19_open_data)                          │
+│              │                                                      │
+│              ▼                                                      │
+│   PySpark Job (Dataproc Serverless)                                 │
+│   ┌─────────────────────────────┐                                   │
 │   │  extract_covid_data.py      │──────► GCS Raw Zone               │
-│   │  load_to_bigquery.py        │──────► BigQuery Staging            │
-│   └─────────────────────────────┘                                    │
+│   │  load_to_bigquery.py        │──────► BigQuery Staging           │
+│   └─────────────────────────────┘                                   │
 └─────────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                      TRANSFORMATION LAYER (dbt)                      │
-│                                                                       │
-│              stg_covid19 (Staging Model)                             │
-│              ┌──────────────────────────┐                            │
-│              │ - Null handling          │                            │
-│              │ - Type casting           │                            │
-│              │ - Filter invalid records │                            │
-│              └──────────────────────────┘                            │
-│                           │                                           │
-│          ┌────────────────┼────────────────┐                         │
-│          ▼                ▼                ▼                         │
+│                      TRANSFORMATION LAYER (dbt)                     │
+│                                                                     │
+│              stg_covid19 (Staging Model)                            │
+│              ┌──────────────────────────┐                           │
+│              │ - Null handling          │                           │
+│              │ - Type casting           │                           │
+│              │ - Filter invalid records │                           │
+│              └──────────────────────────┘                           │
+│                           │                                         │
+│          ┌────────────────┼────────────────┐                        │
+│          ▼                ▼                ▼                        │
 │  mart_pandemic_   mart_vaccination_  mart_government_               │
-│  impact           effectiveness      response                        │
+│  impact           effectiveness      response                       │
 └─────────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                    DATA QUALITY LAYER                                 │
-│                                                                       │
-│   Great Expectations              Elementary                         │
+│                    DATA QUALITY LAYER                               │
+│                                                                     │
+│   Great Expectations              Elementary                        │
 │   ┌─────────────────────┐        ┌─────────────────────┐            │
-│   │ 16 Expectations     │        │ 32 Monitoring Models │            │
-│   │ Schema validation   │        │ Freshness tracking   │            │
-│   │ Range checks        │        │ Anomaly detection    │            │
-│   │ Regex validation    │        │ HTML Report          │            │
+│   │ 16 Expectations     │        │ 32 Monitoring Models │           │
+│   │ Schema validation   │        │ Freshness tracking   │           │
+│   │ Range checks        │        │ Anomaly detection    │           │
+│   │ Regex validation    │        │ HTML Report          │           │
 │   └─────────────────────┘        └─────────────────────┘            │
 └─────────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                    ORCHESTRATION & CI/CD                              │
-│                                                                       │
-│   Cloud Composer DAG              GitHub Actions                     │
+│                    ORCHESTRATION & CI/CD                            │
+│                                                                     │
+│   Cloud Composer DAG              GitHub Actions                    │
 │   ┌─────────────────────┐        ┌─────────────────────┐            │
 │   │ Daily @ midnight    │        │ On push/PR to main  │            │
 │   │ 7 task pipeline     │        │ dbt run + test      │            │
@@ -106,13 +106,13 @@ The platform answers three critical public health questions:
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                      VISUALIZATION LAYER                              │
-│                                                                       │
-│              Looker Studio (3 Dashboards)                            │
-│   ┌──────────────┐ ┌──────────────┐ ┌──────────────┐               │
-│   │ Pandemic     │ │ Vaccination  │ │ Government   │               │
-│   │ Impact       │ │ Effectiveness│ │ Response     │               │
-│   └──────────────┘ └──────────────┘ └──────────────┘               │
+│                      VISUALIZATION LAYER                            │
+│                                                                     │
+│              Looker Studio (3 Dashboards)                           │
+│   ┌──────────────┐ ┌──────────────┐ ┌──────────────┐                │
+│   │ Pandemic     │ │ Vaccination  │ │ Government   │                │
+│   │ Impact       │ │ Effectiveness│ │ Response     │                │
+│   └──────────────┘ └──────────────┘ └──────────────┘                │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -564,5 +564,3 @@ elementary:
 This project is licensed under the MIT License.
 
 ---
-
-<p align="center">Built with ❤️ using Google Cloud Platform, dbt, PySpark, and Great Expectations</p>
